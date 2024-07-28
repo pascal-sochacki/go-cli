@@ -3,6 +3,7 @@ package cmd
 import (
 	"log"
 	"os"
+	"strings"
 
 	"github.com/go-git/go-git/v5"
 	"github.com/spf13/cobra"
@@ -23,7 +24,13 @@ var renovateThisCmd = &cobra.Command{
 		}
 		remotes, err := repo.Remotes()
 		for _, v := range remotes {
-			println(v.String())
+			urls := v.Config().URLs
+			for _, j := range urls {
+				splits := strings.Split(j, ":")
+				lastSegment := splits[len(splits)-1]
+				println(lastSegment)
+
+			}
 		}
 	},
 }
