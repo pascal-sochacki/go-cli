@@ -48,8 +48,8 @@ var renovateCmd = &cobra.Command{
 			Value: &value,
 		})
 		pipeline, _, err := git.Pipelines.CreatePipeline(project.ID, &gitlab.CreatePipelineOptions{
-			Ref:       &ref,
-			Variables: &variables,
+			Ref: &ref,
+			//	Variables: &variables,
 		})
 		if err != nil {
 			log.Fatalf("Failed to trigger pipeline: %s", err.Error())
